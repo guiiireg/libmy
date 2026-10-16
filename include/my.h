@@ -7,9 +7,9 @@ int my_putstr(char const *str);
 int my_put_nbr(int nb);
 int my_showstr(char const *str);
 int my_showmem(char const *str, int size);
-int my_isneg(int nb);
 
 // Math and Utils
+int my_isneg(int nb);
 void my_swap(int *a, int *b);
 void my_sort_int_array(int *tab, int size);
 int my_compute_power_rec(int nb, int power);
