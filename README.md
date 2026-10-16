@@ -15,4 +15,7 @@ To create the `libmy.a`, you need to use the `Makefile` in the `lib/my` folder.
 
 ## Current functions
 
-- [ ] void my_putchar(char c);
+- [x] void my_putchar(char c);
+- [x] int my_putstr(char const \*str);
+- [x] int my_put_nbr(int nb);
+- [ ] int my_showstr(char const \*str);
