@@ -1,21 +1,28 @@
-CC	=	gcc
-AR	=	ar rcs
-RM	=	rm -f
-NAME	=	libmy.a
-# SRC have nothing for now
-OBJ	=	$(SRC:.c=.o)
-CFLAGS	=	-Wall -Wextra	-Werror
+ifeq ($(OS),Windows_NT)
+    RM = del /F /Q
+    FIXPATH = $(subst /,\,$1)
+else
+    RM = rm -f
+    FIXPATH = $1
+endif
 
-all:	$(NAME)
+NAME = libmy.a
+SRC  = $(wildcard *.c)
+OBJ  = $(SRC:.c=.o)
+
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+%.o: %.c
+	gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(call FIXPATH,$(OBJ))
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(call FIXPATH,$(NAME))
 
 re: fclean all
 
